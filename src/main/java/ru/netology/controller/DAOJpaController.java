@@ -1,9 +1,7 @@
 package ru.netology.controller;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Optional;
 
 import ru.netology.repository.DAOJpaRepository;
 import ru.netology.entity.Person;
@@ -40,38 +37,38 @@ public class DAOJpaController {
 
 	@GetMapping("/persons/by-name")
 	public List<Person> getPersonsByName(@RequestParam("name") String name) {
-		return repository.findByPersonIdName(name);
+		return repository.getPersonByName(name);
 	}
 
 	@GetMapping("/persons/by-surname")
 	public List<Person> getPersonsBySurame(@RequestParam("surname") String surname) {
-		return repository.findByPersonIdSurname(surname);
+		return repository.getPersonBySurname(surname);
 	}
 
 	@GetMapping("/persons/by-age")
 	public List<Person> getPersonsBySurame(@RequestParam("age") int age) {
-		return repository.findByPersonIdAge(age);
+		return repository.getPersonByAge(age);
 	}
 
 	@GetMapping("/persons/by-city")
 	public List<Person> getPersonsByCity(@RequestParam("city") String city) {
-		return repository.findByCity(city);
+		return repository.getPersonByCity(city);
 	}
 
 	@GetMapping("/persons/by-phone")
 	public List<Person> getPersonsByPhone(@RequestParam("phone") String phone) {
-		return repository.findByPhone(phone);
+		return repository.getPersonByPhone(phone);
 	}
 
 	@GetMapping("/persons/by-age-less-than")
 	public List<Person> getPersonByAgeLessThen(@RequestParam("age") int age) {
-		return repository.findByPersonIdAgeIsLessThanOrderByPersonIdAgeAsc(age);
+		return repository.getPersonByAgeLessThanOrderByAgeAsc(age);
 	}
 
 	@GetMapping("/persons/by-fullname")
 	public Person getPersonsByFullName(@RequestParam("name") String name,
 			@RequestParam("surname") String surname) {
-		return repository.findByPersonIdNameAndPersonIdSurname(name, surname)
+		return repository.getPersonByNameAndSurname(name, surname)
 				.orElseThrow(() -> new PersonNotFoundException());
 	}
 
