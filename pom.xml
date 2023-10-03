@@ -6,11 +6,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>ru.netology</groupId>
-	<artifactId>DAOHibernate</artifactId>
+	<artifactId>DAOJpaRepository</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>DAOHibernate</name>
+	<name>DAOJpaRepository</name>
 	<url>http://netology.ru</url>
 
 	<properties>
