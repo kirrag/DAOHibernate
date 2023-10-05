@@ -11,9 +11,9 @@ import ru.netology.entity.Person;
 
 @RestController
 public class DAOHibernateController {
-	DAOHibernateRepository repository;
+	private final DAOHibernateRepository repository;
 
-	DAOHibernateController(DAOHibernateRepository repository) {
+	public DAOHibernateController(DAOHibernateRepository repository) {
 		this.repository = repository;
 	}
 	
