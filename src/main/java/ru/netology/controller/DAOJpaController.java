@@ -20,21 +20,21 @@ import ru.netology.exception.PersonNotFoundException;
 
 @RestController
 public class DAOJpaController {
-	DAOJpaRepository repository;
+	private final DAOJpaRepository repository;
 
-	DAOJpaController(DAOJpaRepository repository) {
+	public DAOJpaController(DAOJpaRepository repository) {
 		this.repository = repository;
 	}
 
 	// CREATE
 	@PostMapping("/persons")
-	Person newPerson(@RequestBody Person newPerson) {
+	public Person newPerson(@RequestBody Person newPerson) {
 		return repository.save(newPerson);
 	}
 
 	// READ
 	@GetMapping("/persons")
-	List<Person> getAll() {
+	public List<Person> getAll() {
 		return repository.findAll();
 	}
 
@@ -82,7 +82,7 @@ public class DAOJpaController {
 
 	// UPDATE
 	@PutMapping("/persons")
-	Person updatePerson(@RequestBody Person newPerson) {
+	public Person updatePerson(@RequestBody Person newPerson) {
 		PersonId personId = newPerson.getPersonId();
 
 		if (repository.existsById(personId)) {
@@ -95,12 +95,12 @@ public class DAOJpaController {
 
 	// DELETE
 	@DeleteMapping("/persons/by-personid")
-	void deletePersonByPersonId(@RequestBody PersonId personId) {
+	public void deletePersonByPersonId(@RequestBody PersonId personId) {
 		repository.deleteById(personId);
 	}
 
 	@DeleteMapping("/persons")
-	void deleteAll() {
+	public void deleteAll() {
 		repository.deleteAll();
 	}
 }
